@@ -1,8 +1,7 @@
 import '../../domain/entity/item.dart';
-
 import '../../domain/repository/item_repository.dart';
 
-class ItemRepositoryImpl extends ItemRepository {
+class ItemRepositoryImpl implements ItemRepository {
   @override
   Future<Item> fetchItem(int id) {
     throw UnimplementedError();

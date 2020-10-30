@@ -1,4 +1,7 @@
-class Item {
+import 'package:json_annotation/json_annotation.dart';
+
+@JsonSerializable()
+class ItemResponse {
   final int id;
   final String type;
   final String by;
@@ -9,7 +12,7 @@ class Item {
   final String title;
   final int descendants;
 
-  Item(
+  ItemResponse(
     this.id,
     this.type,
     this.by,

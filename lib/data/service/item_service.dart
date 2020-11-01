@@ -1,13 +1,14 @@
 import 'package:dio/dio.dart';
+import 'package:retrofit/retrofit.dart';
 
 import '../entity/item_response.dart';
 
-class ItemService {
-  final Dio _dio;
+part 'item_service.g.dart';
 
-  ItemService(this._dio);
+@RestApi()
+abstract class ItemService {
+  factory ItemService(Dio dio, {String baseUrl}) = _ItemService;
 
-  Future<ItemResponse> fetchItem(int id) async {
-    final response = await _dio.get("/item/$id.json");
-  }
+  @GET("item/{id}.json")
+  Future<ItemResponse> fetchItem(@Path("id") int id);
 }

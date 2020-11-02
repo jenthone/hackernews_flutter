@@ -1,5 +1,5 @@
-import '../../domain/entity/story_type.dart';
-import '../../domain/repository/story_repository.dart';
+import 'package:domain/entity/story_type.dart';
+import 'package:domain/repository/story_repository.dart';
 
 class StoryRepositoryImpl implements StoryRepository {
   @override

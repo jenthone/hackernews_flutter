@@ -24,7 +24,11 @@ dependencies:
   flutter:
     sdk: flutter
 
+  domain:
+    path: ../domain
+
   get_it: ^5.0.1
+
   dio:
   json_annotation:
   retrofit:
@@ -37,6 +41,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   effective_dart: ^1.0.0
+
   build_runner:
   json_serializable:
   retrofit_generator:

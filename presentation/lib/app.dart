@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'presentation/welcome_screen.dart';
+import 'ui/welcome_screen.dart';
 
 class App extends StatelessWidget {
   @override

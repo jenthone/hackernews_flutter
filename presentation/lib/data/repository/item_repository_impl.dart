@@ -1,5 +1,5 @@
-import '../../domain/entity/item.dart';
-import '../../domain/repository/item_repository.dart';
+import 'package:domain/entity/item.dart';
+import 'package:domain/repository/item_repository.dart';
 import '../mapper/data_mapper.dart';
 import '../service/item_service.dart';
 

@@ -1,4 +1,5 @@
-import '../../domain/entity/item.dart';
+import 'package:domain/entity/item.dart';
+
 import '../entity/item_response.dart';
 
 extension ItemResponseMapper on ItemResponse {

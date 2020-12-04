@@ -1,5 +1,6 @@
 import 'package:domain/entity/item.dart';
 import 'package:domain/repository/item_repository.dart';
+import 'package:domain/result.dart';
 import '../mapper/data_mapper.dart';
 import '../service/item_service.dart';
 
@@ -9,13 +10,15 @@ class ItemRepositoryImpl implements ItemRepository {
   ItemRepositoryImpl(this._itemService);
 
   @override
-  Future<Item> fetchItem(int id) async {
-    final response = await _itemService.fetchItem(id);
-    return response.toDomain();
+  Future<Result<Item>> fetchItem(int id) {
+    return runCatchingAsync(() async {
+      final response = await _itemService.fetchItem(id);
+      return response.toDomain();
+    });
   }
 
   @override
-  Future<Item> fetchOfflineItem(int id) {
+  Future<Result<Item>> fetchOfflineItem(int id) {
     throw UnimplementedError();
   }
 }

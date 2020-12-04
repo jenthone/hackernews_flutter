@@ -1,7 +1,8 @@
 import '../entity/item.dart';
+import '../result.dart';
 
 mixin ItemRepository {
-  Future<Item> fetchItem(int id);
+  Future<Result<Item>> fetchItem(int id);
 
-  Future<Item> fetchOfflineItem(int id);
+  Future<Result<Item>> fetchOfflineItem(int id);
 }

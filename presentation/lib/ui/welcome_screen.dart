@@ -7,7 +7,7 @@ class WelcomeScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     useEffect(() {
-      context.navigator.push(Routes.mainScreen);
+      context.navigator.replace(Routes.mainScreen);
       return null;
     }, []);
     return Scaffold(

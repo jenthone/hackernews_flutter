@@ -8,8 +8,7 @@ dependencies:
 	$(call recursive_in_subs, dependencies)
 
 build-runner:
-	$(MAKE) build-runner -C domain
-	$(MAKE) build-runner -C data
+	$(call recursive_in_subs, build-runner)
 
 analyze:
 	$(call recursive_in_subs, analyze)

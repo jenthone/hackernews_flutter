@@ -1,16 +1,19 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'ui/welcome_screen.dart';
+import 'app_router.gr.dart';
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hackernews Flutter',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+      builder: ExtendedNavigator.builder<AppRouter>(
+        router: AppRouter(),
+        initialRoute: '/',
+        builder: (ctx, extendedNav) => Theme(
+          data: ThemeData.light(),
+          child: extendedNav,
+        ),
       ),
-      home: WelcomeScreen(),
     );
   }
 }

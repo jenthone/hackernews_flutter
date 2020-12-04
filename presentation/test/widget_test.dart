@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import '../lib/app.dart';
+import 'package:hackernews/app.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (tester) async {

@@ -3,3 +3,4 @@
 .packages
 pubspec.lock
 *.freezed.dart
+*.gr.dart

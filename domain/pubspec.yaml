@@ -3,3 +3,8 @@ description: Domain layer for hackernews Flutter project.
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  freezed: ^0.12.3
+  build_runner:
+dev_dependencies:

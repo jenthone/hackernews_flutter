@@ -21,3 +21,5 @@ dart-fix-quietly:
 
 build-android:
 	$(MAKE) build-android -C presentation
+
+setup: dependencies build-runner

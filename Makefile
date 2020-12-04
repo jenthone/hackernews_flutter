@@ -1,9 +1,7 @@
 SUBDIRS = domain data presentation
 
 define recursive_in_subs
-	for dir in $(SUBDIRS); do \
-        $(MAKE) $(1) -C $$dir; \
-    done
+	for dir in $(SUBDIRS); do $(MAKE) $(1) -C $$dir; done
 endef
 
 dependencies:

@@ -15,7 +15,7 @@ class _WelcomeScreen extends State<WelcomeScreen> {
     return Scaffold(
       body: SafeArea(
         child: Center(
-          child: Text("Hello world"),
+          child: Text('Hello world'),
         ),
       ),
     );

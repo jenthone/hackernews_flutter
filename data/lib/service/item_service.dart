@@ -9,6 +9,6 @@ part 'item_service.g.dart';
 abstract class ItemService {
   factory ItemService(Dio dio, {String baseUrl}) = _ItemService;
 
-  @GET("item/{id}.json")
-  Future<ItemResponse> fetchItem(@Path("id") int id);
+  @GET('item/{id}.json')
+  Future<ItemResponse> fetchItem(@Path('id') int id);
 }

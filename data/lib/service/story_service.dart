@@ -7,6 +7,6 @@ part 'story_service.g.dart';
 abstract class StoryService {
   factory StoryService(Dio dio, {String baseUrl}) = _StoryService;
 
-  @GET("{{type}}stories.json")
-  Future<List<int>> fetchStories(@Path("type") String type);
+  @GET('{{type}}stories.json')
+  Future<List<int>> fetchStories(@Path('type') String type);
 }

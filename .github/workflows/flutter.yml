@@ -1,0 +1,25 @@
+name: Flutter
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    container:
+      image: cirrusci/flutter:stable
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: dependencies
+        run: make dependencies
+      - name: build-runner
+        run: make build-runner
+      - name: analyzer
+        run: make analyze
+      - name: build android
+        run: make build-android

@@ -1,20 +1,7 @@
-import 'package:data/api.dart';
-import 'package:data/repository/item_repository_impl.dart';
-import 'package:data/service/item_service.dart';
-import 'package:get_it/get_it.dart';
+import 'package:data/injection.dart';
 
-import 'package:domain/repository/item_repository.dart';
+import 'ui/story_view_model.dart';
 
-final locator = GetIt.instance;
-
-void configureDependencies() async {
-  locator.registerSingleton(dio);
-
-  locator.registerFactory(() => ItemService(locator.get()));
-
-  locator.registerFactory<ItemRepository>(
-    () => ItemRepositoryImpl(
-      locator.get(),
-    ),
-  );
+void configurePresentationDependencies() {
+  getIt.registerFactory(() => StoryViewModel(getIt(), getIt()));
 }

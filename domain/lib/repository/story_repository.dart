@@ -1,5 +1,6 @@
 import '../entity/story_type.dart';
+import '../result.dart';
 
 mixin StoryRepository {
-  Future<List<int>> fetchStories(StoryType type);
+  Future<Result<List<int>>> fetchStories(StoryType type);
 }

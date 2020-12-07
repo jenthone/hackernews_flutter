@@ -10,6 +10,6 @@ abstract class StoryService {
   @factoryMethod
   factory StoryService(Dio dio) = _StoryService;
 
-  @GET('{{type}}stories.json')
-  Future<List<int>> fetchStories(@Path('type') String type);
+  @GET('{type}.json')
+  Future<List<int>> fetchStories(@Path('type') String storyType);
 }

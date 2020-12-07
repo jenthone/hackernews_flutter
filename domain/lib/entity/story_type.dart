@@ -1,1 +1,8 @@
-enum StoryType { top, neww, best, ask, show, job }
+enum StoryType {
+  topstories,
+  newstories,
+  beststories,
+  askstories,
+  showstories,
+  jobstories,
+}

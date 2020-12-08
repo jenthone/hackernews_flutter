@@ -32,7 +32,7 @@ class StoryScreen extends HookWidget {
     Map<int, Item> items,
   ) {
     return ListView.separated(
-      itemCount: items.length,
+      itemCount: stories.length,
       itemBuilder: (_, index) {
         final item = items[stories[index]];
         final content =
@@ -42,10 +42,8 @@ class StoryScreen extends HookWidget {
         }
         return Card(
           child: Container(
-            child: SizedBox(
-              child: content,
-              height: 96,
-            ),
+            padding: EdgeInsets.all(16),
+            child: content,
           ),
         );
       },
@@ -56,20 +54,82 @@ class StoryScreen extends HookWidget {
   }
 
   Widget _buildLoadingItem() {
-    return Center(
-      child: SpinKitThreeBounce(
-        color: Colors.black38,
-        size: 16,
+    return SizedBox(
+      height: 96,
+      child: Center(
+        child: SpinKitThreeBounce(
+          color: Colors.black38,
+          size: 16,
+        ),
       ),
     );
   }
 
   Widget _buildContentItem(Item item) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(item.url),
-        SizedBox(height: 10),
-        Text(item.title),
+        Text(
+          item.url ?? '',
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            color: Colors.grey,
+            fontSize: 14,
+          ),
+        ),
+        SizedBox(height: 8),
+        Text(
+          item.title ?? '',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 16,
+          ),
+        ),
+        SizedBox(height: 8),
+        Row(
+          children: [
+            Text(
+              item.by ?? '',
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: 14,
+              ),
+            ),
+            SizedBox(
+              width: 16,
+            ),
+            Text(
+              item.time.toString() ?? '',
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 14,
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 8),
+        Row(
+          children: [
+            Icon(Icons.favorite),
+            Text(
+              item.score.toString() ?? '',
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 14,
+              ),
+            ),
+            SizedBox(width: 16),
+            Icon(Icons.comment),
+            Text(
+              item.descendants.toString() ?? '',
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 14,
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }

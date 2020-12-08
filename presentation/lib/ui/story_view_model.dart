@@ -21,22 +21,24 @@ class StoryViewModel extends ChangeNotifier {
   Future<void> fetchItems(StoryType storyType) async {
     final result = await _getStoriesUseCase.execute(storyType);
     result.when(
-        success: (data) {
-          _stories = data;
-          notifyListeners();
-        },
-        error: (error) {});
+      success: (data) {
+        _stories = data.take(20).toList();
+        notifyListeners();
+      },
+      error: (error) {},
+    );
   }
 
   Future<void> fetchItem(int id) async {
     final result = await _getItemUseCase.execute(id);
     result.when(
-        success: (data) {
-          _items = Map.from(_items);
-          _items[id] = data;
-          notifyListeners();
-        },
-        error: null);
+      success: (data) {
+        _items = Map.from(_items);
+        _items[id] = data;
+        notifyListeners();
+      },
+      error: (error) {},
+    );
   }
 }
 

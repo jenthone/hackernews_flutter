@@ -77,20 +77,20 @@ class StoryScreen extends HookWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
+              item.title ?? '',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(
               item.url ?? '',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: Colors.grey,
                 fontSize: 14,
-              ),
-            ),
-            SizedBox(height: 8),
-            Text(
-              item.title ?? '',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16,
               ),
             ),
             SizedBox(height: 8),
@@ -118,7 +118,10 @@ class StoryScreen extends HookWidget {
             SizedBox(height: 8),
             Row(
               children: [
-                Icon(Icons.favorite),
+                Icon(
+                  Icons.favorite,
+                  color: Colors.red,
+                ),
                 SizedBox(width: 4),
                 Text(
                   item.score.toString() ?? '',
@@ -128,7 +131,10 @@ class StoryScreen extends HookWidget {
                   ),
                 ),
                 SizedBox(width: 16),
-                Icon(Icons.comment),
+                Icon(
+                  Icons.comment,
+                  color: Colors.red,
+                ),
                 SizedBox(width: 4),
                 Text(
                   item.descendants.toString() ?? '',

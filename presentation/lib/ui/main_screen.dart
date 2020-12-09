@@ -2,50 +2,38 @@ import 'package:domain/entity/story_type.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import '../util/story_helper.dart';
+import 'main_view_model.dart';
 import 'story_screen.dart';
 
 class MainScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    final tabBars = StoryType.values.map(
-      (e) => Tab(text: _getDisplayTitle(e)),
+    final storyType =
+        useProvider(mainViewModelProvider.select((value) => value.storyType));
+    return Scaffold(
+      appBar: AppBar(
+        title: DropdownButton(
+            value: context.read(mainViewModelProvider).storyType,
+            style: TextStyle(color: Colors.white),
+            iconDisabledColor: Colors.black,
+            iconEnabledColor: Colors.white,
+            underline: SizedBox(),
+            dropdownColor: Colors.blue,
+            items: StoryType.values.map((e) {
+              return DropdownMenuItem(
+                value: e,
+                child: Text(StoryHelper.getDisplayTitle(e)),
+              );
+            }).toList(),
+            onChanged: (item) {
+              context.read(mainViewModelProvider).storyType = item;
+            }),
+        centerTitle: true,
+      ),
+      body: StoryScreen(storyType),
     );
-    final tabViews = StoryType.values.map(
-      (e) => StoryScreen(e),
-    );
-    return DefaultTabController(
-        length: StoryType.values.length,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Hacker News'),
-            centerTitle: true,
-            bottom: TabBar(
-              isScrollable: true,
-              tabs: tabBars.toList(),
-            ),
-          ),
-          body: TabBarView(
-            children: tabViews.toList(),
-          ),
-        ));
-  }
-
-  String _getDisplayTitle(StoryType storyType) {
-    switch (storyType) {
-      case StoryType.askstories:
-        return 'ASK';
-      case StoryType.topstories:
-        return 'TOP';
-      case StoryType.newstories:
-        return 'NEW';
-      case StoryType.beststories:
-        return 'BEST';
-      case StoryType.showstories:
-        return 'SHOW';
-      case StoryType.jobstories:
-        return 'JOB';
-      default:
-        return '';
-    }
   }
 }

@@ -43,6 +43,8 @@ dependencies:
 
   flutter_spinkit: ^4.1.2
 
+  webview_flutter:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

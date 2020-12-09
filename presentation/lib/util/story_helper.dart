@@ -4,17 +4,17 @@ class StoryHelper {
   static String getDisplayTitle(StoryType storyType) {
     switch (storyType) {
       case StoryType.askstories:
-        return 'ASK';
+        return 'Ask Stories';
       case StoryType.topstories:
-        return 'TOP';
+        return 'Top Stories';
       case StoryType.newstories:
-        return 'NEW';
+        return 'New Stories';
       case StoryType.beststories:
-        return 'BEST';
+        return 'Best Stories';
       case StoryType.showstories:
-        return 'SHOW';
+        return 'Show Stories';
       case StoryType.jobstories:
-        return 'JOB';
+        return 'Job Stories';
       default:
         return '';
     }

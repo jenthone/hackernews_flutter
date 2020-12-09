@@ -17,7 +17,7 @@ class MainScreen extends HookWidget {
       appBar: AppBar(
         title: DropdownButton(
             value: context.read(mainViewModelProvider).storyType,
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.white, fontSize: 16),
             iconDisabledColor: Colors.black,
             iconEnabledColor: Colors.white,
             underline: SizedBox(),
@@ -31,7 +31,6 @@ class MainScreen extends HookWidget {
             onChanged: (item) {
               context.read(mainViewModelProvider).storyType = item;
             }),
-        centerTitle: true,
       ),
       body: StoryScreen(storyType),
     );

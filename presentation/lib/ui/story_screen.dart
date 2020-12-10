@@ -20,7 +20,7 @@ class StoryScreen extends HookWidget {
     useEffect(() {
       context.read(storyViewModelProvider).fetchItems(_storyType);
       return null;
-    }, []);
+    }, [_storyType]);
     final stories =
         useProvider(storyViewModelProvider.select((value) => value.stories));
     final items =

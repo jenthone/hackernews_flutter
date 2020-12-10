@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../util/story_helper.dart';
+import '../../util/story_helper.dart';
+import '../story/story_screen.dart';
 import 'main_view_model.dart';
-import 'story_screen.dart';
 
 class MainScreen extends HookWidget {
   @override

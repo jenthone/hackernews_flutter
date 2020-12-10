@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route_annotations.dart';
 
-import 'ui/main_screen.dart';
+import 'ui/main/main_screen.dart';
 import 'ui/web_screen.dart';
 import 'ui/welcome_screen.dart';
 

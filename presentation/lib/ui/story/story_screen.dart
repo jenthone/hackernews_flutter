@@ -1,13 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:domain/entity/item.dart';
 import 'package:domain/entity/story_type.dart';
+import 'package:domain/logger.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../app_router.gr.dart';
+import '../../app_router.gr.dart';
 import 'story_view_model.dart';
 
 class StoryScreen extends HookWidget {
@@ -21,10 +22,13 @@ class StoryScreen extends HookWidget {
       context.read(storyViewModelProvider).fetchItems(_storyType);
       return null;
     }, [_storyType]);
-    final stories =
-        useProvider(storyViewModelProvider.select((value) => value.stories));
-    final items =
-        useProvider(storyViewModelProvider.select((value) => value.items));
+    final stories = useProvider(
+      storyViewModelProvider.select((value) => value.stories),
+    );
+    final items = useProvider(
+      storyViewModelProvider.select((value) => value.items),
+    );
+    logger.d('Build $_storyType, ${stories.length}');
     return _buildContent(context, stories, items);
   }
 

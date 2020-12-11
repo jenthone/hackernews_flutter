@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:domain/entity/item.dart';
 import 'package:domain/entity/story_type.dart';
-import 'package:domain/logger.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -9,6 +8,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../app_router.gr.dart';
+import '../../config/color.dart';
+import '../../util/state_layout.dart';
 import 'story_view_model.dart';
 
 class StoryScreen extends HookWidget {
@@ -28,8 +29,14 @@ class StoryScreen extends HookWidget {
     final items = useProvider(
       storyViewModelProvider.select((value) => value.items),
     );
-    logger.d('Build $_storyType, ${stories.length}');
-    return _buildContent(context, stories, items);
+    final isLoading = useProvider(
+      storyViewModelProvider.select((value) => value.isLoading),
+    );
+
+    return Statelayout(
+      isLoading: isLoading,
+      child: _buildContent(context, stories, items),
+    );
   }
 
   Widget _buildContent(
@@ -59,7 +66,7 @@ class StoryScreen extends HookWidget {
       height: 96,
       child: Center(
         child: SpinKitThreeBounce(
-          color: Colors.black38,
+          color: appColor,
           size: 16,
         ),
       ),
@@ -124,7 +131,7 @@ class StoryScreen extends HookWidget {
               children: [
                 Icon(
                   Icons.favorite,
-                  color: Colors.red,
+                  color: appColor,
                 ),
                 SizedBox(width: 4),
                 Text(
@@ -137,7 +144,7 @@ class StoryScreen extends HookWidget {
                 SizedBox(width: 16),
                 Icon(
                   Icons.comment,
-                  color: Colors.red,
+                  color: appColor,
                 ),
                 SizedBox(width: 4),
                 Text(

@@ -1,6 +1,7 @@
 import 'package:data/injection.dart';
 import 'package:domain/entity/item.dart';
 import 'package:domain/entity/story_type.dart';
+import 'package:domain/logger.dart';
 import 'package:domain/usecase/get_item_use_case.dart';
 import 'package:domain/usecase/get_stories_use_case.dart';
 import 'package:flutter/material.dart';
@@ -18,14 +19,22 @@ class StoryViewModel extends ChangeNotifier {
   Map<int, Item> _items = {};
   Map<int, Item> get items => _items;
 
+  bool _isLoading = true;
+  bool get isLoading => _isLoading;
+
   Future<void> fetchItems(StoryType storyType) async {
+    _isLoading = true;
+    notifyListeners();
     final result = await _getStoriesUseCase.execute(storyType);
     result.when(
       success: (data) {
         _stories = data.take(20).toList();
+        _isLoading = false;
         notifyListeners();
       },
-      error: (error) {},
+      error: (error) {
+        logger.e(error);
+      },
     );
   }
 
@@ -37,7 +46,9 @@ class StoryViewModel extends ChangeNotifier {
         _items[id] = data;
         notifyListeners();
       },
-      error: (error) {},
+      error: (error) {
+        logger.e(error);
+      },
     );
   }
 }

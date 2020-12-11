@@ -33,9 +33,13 @@ class StoryScreen extends HookWidget {
       storyViewModelProvider.select((value) => value.isLoading),
     );
 
+    final currentSize = useProvider(
+      storyViewModelProvider.select((value) => value.currentSize),
+    );
+
     return Statelayout(
       isLoading: isLoading,
-      child: _buildContent(context, stories, items),
+      child: _buildContent(context, stories, items, currentSize),
     );
   }
 
@@ -43,21 +47,30 @@ class StoryScreen extends HookWidget {
     BuildContext context,
     List<int> stories,
     Map<int, Item> items,
+    int currentSize,
   ) {
-    return ListView.builder(
-      itemCount: stories.length,
-      itemBuilder: (_, index) {
-        final item = items[stories[index]];
-        final content = item == null
-            ? _buildLoadingItem()
-            : _buildContentItem(context, item);
-        if (item == null) {
-          context.read(storyViewModelProvider).fetchItem(stories[index]);
+    return NotificationListener<ScrollNotification>(
+      onNotification: (scrollInfo) {
+        if (scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent) {
+          context.read(storyViewModelProvider).loadMore();
         }
-        return Card(
-          child: content,
-        );
+        return false;
       },
+      child: ListView.builder(
+        itemCount: currentSize,
+        itemBuilder: (_, index) {
+          final item = items[stories[index]];
+          final content = item == null
+              ? _buildLoadingItem()
+              : _buildContentItem(context, item);
+          if (item == null) {
+            context.read(storyViewModelProvider).fetchItem(stories[index]);
+          }
+          return Card(
+            child: content,
+          );
+        },
+      ),
     );
   }
 

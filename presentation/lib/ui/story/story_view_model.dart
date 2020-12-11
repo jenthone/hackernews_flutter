@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:data/injection.dart';
 import 'package:domain/entity/item.dart';
 import 'package:domain/entity/story_type.dart';
@@ -8,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class StoryViewModel extends ChangeNotifier {
+  static const pageSize = 10;
+
   final GetItemUseCase _getItemUseCase;
   final GetStoriesUseCase _getStoriesUseCase;
 
@@ -22,13 +26,19 @@ class StoryViewModel extends ChangeNotifier {
   bool _isLoading = true;
   bool get isLoading => _isLoading;
 
+  int _visibleStorySize = pageSize;
+
+  int get visibleStorySize => min(_visibleStorySize, _stories.length);
+
   Future<void> fetchItems(StoryType storyType) async {
     _isLoading = true;
+    _visibleStorySize = pageSize;
     notifyListeners();
+
     final result = await _getStoriesUseCase.execute(storyType);
     result.when(
       success: (data) {
-        _stories = data.take(20).toList();
+        _stories = data.toList();
         _isLoading = false;
         notifyListeners();
       },
@@ -50,6 +60,12 @@ class StoryViewModel extends ChangeNotifier {
         logger.e(error);
       },
     );
+  }
+
+  void loadMoreStories() {
+    final nextVisibleStorySize = _visibleStorySize + pageSize;
+    _visibleStorySize = min(nextVisibleStorySize, _stories.length);
+    notifyListeners();
   }
 }
 

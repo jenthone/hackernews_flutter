@@ -10,6 +10,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../app_router.gr.dart';
 import '../../config/color.dart';
 import '../../util/state_layout.dart';
+import '../../util/story_helper.dart';
 import 'story_view_model.dart';
 
 class StoryScreen extends HookWidget {
@@ -133,7 +134,7 @@ class StoryScreen extends HookWidget {
                   width: 16,
                 ),
                 Text(
-                  item.time.toString(),
+                  StoryHelper.formatDate(item.timeInSeconds),
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 14,

@@ -2,7 +2,7 @@ class Item {
   final int id;
   final String type;
   final String by;
-  final int time;
+  final int timeInSeconds;
   final String text;
   final String url;
   final int score;
@@ -13,7 +13,7 @@ class Item {
     this.id,
     this.type,
     this.by,
-    this.time,
+    this.timeInSeconds,
     this.text,
     this.url,
     this.score,

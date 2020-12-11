@@ -45,6 +45,8 @@ dependencies:
 
   webview_flutter:
 
+  timeago:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -48,6 +48,8 @@ Hacker news app written by Flutter.
 - Network:
   - [Dio](https://github.com/flutterchina/dio)
   - [Retrofit](https://github.com/trevorwang/retrofit.dart)
+- UI:
+  - [timeago](https://pub.dev/packages/timeago)
 
 ## CI
 

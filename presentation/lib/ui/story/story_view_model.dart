@@ -26,13 +26,15 @@ class StoryViewModel extends ChangeNotifier {
   bool _isLoading = true;
   bool get isLoading => _isLoading;
 
-  int _currentSize = pageSize;
+  int _visibleStorySize = pageSize;
 
-  int get currentSize => min(_currentSize, _stories.length);
+  int get visibleStorySize => min(_visibleStorySize, _stories.length);
 
   Future<void> fetchItems(StoryType storyType) async {
     _isLoading = true;
+    _visibleStorySize = pageSize;
     notifyListeners();
+
     final result = await _getStoriesUseCase.execute(storyType);
     result.when(
       success: (data) {
@@ -60,9 +62,9 @@ class StoryViewModel extends ChangeNotifier {
     );
   }
 
-  void loadMore() {
-    final newSize = _currentSize + pageSize;
-    _currentSize = min(newSize, _stories.length);
+  void loadMoreStories() {
+    final nextVisibleStorySize = _visibleStorySize + pageSize;
+    _visibleStorySize = min(nextVisibleStorySize, _stories.length);
     notifyListeners();
   }
 }

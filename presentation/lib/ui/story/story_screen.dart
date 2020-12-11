@@ -33,13 +33,13 @@ class StoryScreen extends HookWidget {
       storyViewModelProvider.select((value) => value.isLoading),
     );
 
-    final currentSize = useProvider(
-      storyViewModelProvider.select((value) => value.currentSize),
+    final visibleStorySize = useProvider(
+      storyViewModelProvider.select((value) => value.visibleStorySize),
     );
 
     return Statelayout(
       isLoading: isLoading,
-      child: _buildContent(context, stories, items, currentSize),
+      child: _buildContent(context, stories, items, visibleStorySize),
     );
   }
 
@@ -52,7 +52,7 @@ class StoryScreen extends HookWidget {
     return NotificationListener<ScrollNotification>(
       onNotification: (scrollInfo) {
         if (scrollInfo.metrics.pixels == scrollInfo.metrics.maxScrollExtent) {
-          context.read(storyViewModelProvider).loadMore();
+          context.read(storyViewModelProvider).loadMoreStories();
         }
         return false;
       },

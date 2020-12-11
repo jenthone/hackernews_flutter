@@ -51,4 +51,4 @@ Hacker news app written by Flutter.
 
 ## CI
 
-- [Github Workflow](.github/workflows/flutter.yml)
+- [Github Actions](.github/workflows/flutter.yml)

@@ -94,23 +94,18 @@ class StoryScreen extends HookWidget {
                 fontSize: 16,
               ),
             ),
-            Visibility(
-              visible: item.url != null,
-              child: Column(
-                children: [
-                  SizedBox(height: 8),
-                  Text(
-                    item.url ?? '',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
+            if (item.url != null) ...[
+              SizedBox(height: 8),
+              Text(
+                item.url ?? '',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 14,
+                ),
               ),
-            ),
+            ],
             SizedBox(height: 8),
             Row(
               children: [

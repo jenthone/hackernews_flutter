@@ -81,7 +81,7 @@ class StoryScreen extends HookWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              item.title ?? '',
+              item.title,
               style: TextStyle(
                 color: Colors.black,
                 fontSize: 16,
@@ -101,7 +101,7 @@ class StoryScreen extends HookWidget {
             Row(
               children: [
                 Text(
-                  item.by ?? '',
+                  item.by,
                   style: TextStyle(
                     color: Colors.red,
                     fontSize: 14,
@@ -111,7 +111,7 @@ class StoryScreen extends HookWidget {
                   width: 16,
                 ),
                 Text(
-                  item.time.toString() ?? '',
+                  item.time.toString(),
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 14,
@@ -128,7 +128,7 @@ class StoryScreen extends HookWidget {
                 ),
                 SizedBox(width: 4),
                 Text(
-                  item.score.toString() ?? '',
+                  item.score.toString(),
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 14,
@@ -141,7 +141,7 @@ class StoryScreen extends HookWidget {
                 ),
                 SizedBox(width: 4),
                 Text(
-                  item.descendants.toString() ?? '',
+                  item.descendants.toString(),
                   style: TextStyle(
                     color: Colors.grey,
                     fontSize: 14,

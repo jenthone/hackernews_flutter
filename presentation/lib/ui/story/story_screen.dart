@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:data/api.dart';
 import 'package:domain/entity/item.dart';
 import 'package:domain/entity/story_type.dart';
 import 'package:flutter/cupertino.dart';
@@ -163,16 +164,29 @@ class StoryScreen extends HookWidget {
                   ),
                 ),
                 SizedBox(width: 16),
-                Icon(
-                  Icons.comment,
-                  color: appColor,
-                ),
-                SizedBox(width: 4),
-                Text(
-                  item.descendants.toString(),
-                  style: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 14,
+                GestureDetector(
+                  onTap: () {
+                    final commentUrl = createCommentUrl(item.id);
+                    context.navigator.push(
+                      Routes.webScreen,
+                      arguments: WebScreenArguments(url: commentUrl),
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.comment,
+                        color: appColor,
+                      ),
+                      SizedBox(width: 4),
+                      Text(
+                        item.descendants.toString(),
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],

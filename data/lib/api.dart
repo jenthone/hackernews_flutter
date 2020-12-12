@@ -5,3 +5,5 @@ Dio provideDio() {
   final options = BaseOptions(baseUrl: baseUrl);
   return Dio(options)..interceptors.add(LogInterceptor());
 }
+
+String createCommentUrl(int id) => 'https://news.ycombinator.com/item?id=$id';

@@ -7,7 +7,5 @@ class GetItemUseCase {
 
   GetItemUseCase(this._itemRepository);
 
-  Future<Result<Item>> execute(int id) {
-    return _itemRepository.fetchItem(id);
-  }
+  Future<Result<Item>> execute(int id) => _itemRepository.fetchItem(id);
 }

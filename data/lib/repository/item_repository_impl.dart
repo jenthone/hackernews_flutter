@@ -18,9 +18,4 @@ class ItemRepositoryImpl implements ItemRepository {
       return response.toDomain();
     });
   }
-
-  @override
-  Future<Result<Item>> fetchOfflineItem(int id) {
-    throw UnimplementedError();
-  }
 }

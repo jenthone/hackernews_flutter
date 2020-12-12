@@ -38,7 +38,7 @@ class StoryScreen extends HookWidget {
       storyViewModelProvider.select((value) => value.visibleStorySize),
     );
 
-    return Statelayout(
+    return StateLayout(
       isLoading: isLoading,
       child: _buildContent(context, stories, items, visibleStorySize),
     );
@@ -57,20 +57,25 @@ class StoryScreen extends HookWidget {
         }
         return false;
       },
-      child: ListView.builder(
-        itemCount: currentSize,
-        itemBuilder: (_, index) {
-          final item = items[stories[index]];
-          final content = item == null
-              ? _buildLoadingItem()
-              : _buildContentItem(context, item);
-          if (item == null) {
-            context.read(storyViewModelProvider).fetchItem(stories[index]);
-          }
-          return Card(
-            child: content,
-          );
+      child: RefreshIndicator(
+        onRefresh: () async {
+          await context.read(storyViewModelProvider).fetchItems(_storyType);
         },
+        child: ListView.builder(
+          itemCount: currentSize,
+          itemBuilder: (_, index) {
+            final item = items[stories[index]];
+            final content = item == null
+                ? _buildLoadingItem()
+                : _buildContentItem(context, item);
+            if (item == null) {
+              context.read(storyViewModelProvider).fetchItem(stories[index]);
+            }
+            return Card(
+              child: content,
+            );
+          },
+        ),
       ),
     );
   }

@@ -1,6 +1,6 @@
 # hackernews_flutter
 
-Hacker news app written by Flutter.
+Hacker news app written in Flutter.
 
 ## Getting Started
 

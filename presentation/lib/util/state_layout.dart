@@ -3,11 +3,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../config/color.dart';
 
-class Statelayout extends StatelessWidget {
+class StateLayout extends StatelessWidget {
   final bool _isLoading;
   final Widget _child;
 
-  Statelayout({bool isLoading, Widget child})
+  StateLayout({bool isLoading, Widget child})
       : _isLoading = isLoading,
         _child = child;
 

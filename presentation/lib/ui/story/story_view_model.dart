@@ -44,6 +44,9 @@ class StoryViewModel extends ChangeNotifier {
       },
       error: (error) {
         logger.e(error);
+        _stories = [];
+        _isLoading = false;
+        notifyListeners();
       },
     );
   }

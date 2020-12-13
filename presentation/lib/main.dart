@@ -5,8 +5,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'app.dart';
 import 'injection.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   configureDataDependencies();
   configurePresentationDependencies();
+
   runApp(ProviderScope(child: App()));
 }

@@ -25,6 +25,7 @@ class StoryScreen extends HookWidget {
       context.read(storyViewModelProvider).fetchItems(_storyType);
       return null;
     }, [_storyType]);
+
     final stories = useProvider(
       storyViewModelProvider.select((value) => value.stories),
     );

@@ -17,6 +17,7 @@ dependencies:
 
   get_it:
   injectable:
+  freezed:
 
 dev_dependencies:
   build_runner:

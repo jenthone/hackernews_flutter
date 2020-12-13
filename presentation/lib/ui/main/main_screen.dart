@@ -25,10 +25,10 @@ class MainScreen extends HookWidget {
             iconEnabledColor: Colors.white,
             underline: SizedBox(),
             dropdownColor: appColor,
-            items: StoryType.values.map((e) {
+            items: StoryType.values.map((value) {
               return DropdownMenuItem(
-                value: e,
-                child: Text(StoryHelper.getDisplayTitle(e)),
+                value: value,
+                child: Text(StoryHelper.getDisplayTitle(value)),
               );
             }).toList(),
             onChanged: (item) {

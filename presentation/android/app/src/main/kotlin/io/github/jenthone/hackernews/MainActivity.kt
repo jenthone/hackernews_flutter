@@ -1,4 +1,4 @@
-package com.hackernews.hackernews
+package io.github.jenthone.hackernews
 
 import io.flutter.embedding.android.FlutterActivity
 

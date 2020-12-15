@@ -24,3 +24,6 @@ build-android:
 	$(MAKE) build-android -C presentation
 
 setup: clean dependencies build-runner
+
+run:
+	$(MAKE) run -C presentation

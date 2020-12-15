@@ -10,6 +10,8 @@ Hacker news app written in Flutter.
 
 - Run `make dart-fix-quietly` to quick fix dart syntax.
 
+- Run `make run` to run project.
+
 ## Coding convention
 
 ### [The seven rules of a great Git commit message](https://chris.beams.io/posts/git-commit)

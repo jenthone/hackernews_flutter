@@ -10,3 +10,5 @@ dart-fix-quietly:
 	flutter pub global run dartfix --pedantic lib --overwrite
 build-android:
 	flutter build apk
+run:
+	flutter run lib/main.dart

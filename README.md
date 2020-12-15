@@ -29,10 +29,10 @@ Hacker news app written in Flutter.
 ## Build with
 
 - Architecture:
-
   - [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
   - [MVVM](https://en.wikipedia.org/wiki/Model-view-viewmodel)
-
+- Monorepo management:
+  - [Make](https://www.gnu.org/software/make/manual/make.html)
 - Dependency Injection:
   - [Get It](https://github.com/fluttercommunity/get_it)
   - [Injectable](https://pub.dev/packages/injectable)

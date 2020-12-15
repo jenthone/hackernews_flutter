@@ -2,6 +2,8 @@
 
 Hacker news app written in Flutter.
 
+![screenshot](screenshots/screenshots.png)
+
 ## Getting Started
 
 - Run `make setup` to setup project.
@@ -50,6 +52,8 @@ Hacker news app written in Flutter.
   - [Retrofit](https://github.com/trevorwang/retrofit.dart)
 - UI:
   - [timeago](https://pub.dev/packages/timeago)
+  - [webview_flutter](https://pub.dev/packages/webview_flutter)
+  - [flutter_spinkit](https://pub.dev/packages/flutter_spinkit)
 
 ## CI
 

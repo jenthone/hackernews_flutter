@@ -1,0 +1,11 @@
+include: package:effective_dart/analysis_options.yaml
+analyzer:
+  exclude:
+    - "lib/**/*.g.dart"
+    - "lib/**/*.freezed.dart"
+    - "lib/injection.config.dart"
+linter:
+  rules:
+    public_member_api_docs: false
+    one_member_abstracts: false
+    prefer_function_declarations_over_variables: false

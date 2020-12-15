@@ -20,6 +20,7 @@ dependencies:
   freezed:
 
 dev_dependencies:
+  effective_dart:
   build_runner:
   json_serializable:
   retrofit_generator:

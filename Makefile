@@ -7,6 +7,9 @@ endef
 dependencies:
 	$(call recursive_in_subs, dependencies)
 
+clean:
+	$(call recursive_in_subs, clean)
+
 build-runner:
 	$(call recursive_in_subs, build-runner)
 
@@ -20,4 +23,4 @@ dart-fix-quietly:
 build-android:
 	$(MAKE) build-android -C presentation
 
-setup: dependencies build-runner
+setup: clean dependencies build-runner

@@ -2,7 +2,7 @@
 
 Hacker news app written in Flutter.
 
-![screenshot](screenshots/screenshots.png)
+<img src="screenshots/screenshots.png" alt="drawing" width="50%"/>
 
 ## Getting Started
 

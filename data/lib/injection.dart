@@ -1,11 +1,10 @@
-import 'package:data/api.dart';
 import 'package:dio/dio.dart';
 import 'package:domain/usecase/get_item_use_case.dart';
 import 'package:domain/usecase/get_stories_use_case.dart';
 import 'package:get_it/get_it.dart';
-
 import 'package:injectable/injectable.dart';
 
+import 'api.dart';
 import 'injection.config.dart';
 
 final getIt = GetIt.instance;

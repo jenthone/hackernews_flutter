@@ -10,6 +10,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../app_router.gr.dart';
 import '../../config/color.dart';
+import '../../util/hooks.dart';
 import '../../util/state_layout.dart';
 import '../../util/story_helper.dart';
 import 'story_view_model.dart';
@@ -21,7 +22,7 @@ class StoryScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    useEffect(() {
+    usePostFrameCallback(() {
       context.read(storyViewModelProvider).fetchItems(_storyType);
       return null;
     }, [_storyType]);

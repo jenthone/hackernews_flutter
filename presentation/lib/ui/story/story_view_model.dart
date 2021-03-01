@@ -36,33 +36,31 @@ class StoryViewModel extends ChangeNotifier {
     notifyListeners();
 
     final result = await _getStoriesUseCase.execute(storyType);
-    result.when(
-      success: (data) {
-        _stories = data.toList();
-        _isLoading = false;
-        notifyListeners();
-      },
-      error: (error) {
-        logger.e(error);
-        _stories = [];
-        _isLoading = false;
-        notifyListeners();
-      },
-    );
+    if (result.isValue) {
+      final data = result.asValue.value;
+      _stories = data.toList();
+      _isLoading = false;
+      notifyListeners();
+    } else if (result.isError) {
+      final error = result.asError.error;
+      logger.e(error);
+      _stories = [];
+      _isLoading = false;
+      notifyListeners();
+    }
   }
 
   Future<void> fetchItem(int id) async {
     final result = await _getItemUseCase.execute(id);
-    result.when(
-      success: (data) {
-        _items = Map.from(_items);
-        _items[id] = data;
-        notifyListeners();
-      },
-      error: (error) {
-        logger.e(error);
-      },
-    );
+    if (result.isValue) {
+      final data = result.asValue.value;
+      _items = Map.from(_items);
+      _items[id] = data;
+      notifyListeners();
+    } else if (result.isError) {
+      final error = result.asError.error;
+      logger.e(error);
+    }
   }
 
   void loadMoreStories() {

@@ -1,6 +1,6 @@
 import 'package:domain/entity/story_type.dart';
 import 'package:domain/repository/story_repository.dart';
-import 'package:domain/result.dart';
+import 'package:async/async.dart';
 
 class GetStoriesUseCase {
   final StoryRepository _storyRepository;

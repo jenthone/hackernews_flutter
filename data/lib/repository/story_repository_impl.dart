@@ -1,7 +1,6 @@
 import 'package:async/async.dart';
 import 'package:domain/entity/story_type.dart';
 import 'package:domain/repository/story_repository.dart';
-import 'package:domain/result_helper.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,8 +14,6 @@ class StoryRepositoryImpl implements StoryRepository {
 
   @override
   Future<Result<List<int>>> fetchStories(StoryType type) {
-    return runCatchingAsync(() async {
-      return await _storyService.fetchStories(describeEnum(type));
-    });
+    return Result.capture(_storyService.fetchStories(describeEnum(type)));
   }
 }

@@ -1,7 +1,6 @@
 import 'package:async/async.dart';
 import 'package:domain/entity/item.dart';
 import 'package:domain/repository/item_repository.dart';
-import 'package:domain/result_helper.dart';
 import 'package:injectable/injectable.dart';
 
 import '../mapper/data_mapper.dart';
@@ -15,9 +14,8 @@ class ItemRepositoryImpl implements ItemRepository {
 
   @override
   Future<Result<Item>> fetchItem(int id) {
-    return runCatchingAsync(() async {
-      final response = await _itemService.fetchItem(id);
-      return response.toDomain();
-    });
+    final responseFuture =
+        _itemService.fetchItem(id).then((value) => value.toDomain());
+    return Result.capture(responseFuture);
   }
 }

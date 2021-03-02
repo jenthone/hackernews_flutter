@@ -1,6 +1,7 @@
+import 'package:async/async.dart';
 import 'package:domain/entity/story_type.dart';
 import 'package:domain/repository/story_repository.dart';
-import 'package:domain/result.dart';
+import 'package:domain/result_helper.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 

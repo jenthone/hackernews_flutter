@@ -8,5 +8,7 @@ dependencies:
   freezed:
 
   logger:
+
+  async:
 dev_dependencies:
   build_runner:

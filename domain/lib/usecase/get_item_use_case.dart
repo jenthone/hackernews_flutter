@@ -1,6 +1,6 @@
 import 'package:domain/entity/item.dart';
 import 'package:domain/repository/item_repository.dart';
-import 'package:domain/result.dart';
+import 'package:async/async.dart';
 
 class GetItemUseCase {
   final ItemRepository _itemRepository;

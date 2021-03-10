@@ -4,3 +4,4 @@
 pubspec.lock
 *.freezed.dart
 *.gr.dart
+.vscode/*.log

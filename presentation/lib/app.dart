@@ -13,6 +13,8 @@ class App extends StatelessWidget {
     ));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      // Workaround for auto-route when update to Flutter 2.0
+      onGenerateRoute: (_) => null,
       builder: ExtendedNavigator.builder<AppRouter>(
         router: AppRouter(),
         initialRoute: '/',
